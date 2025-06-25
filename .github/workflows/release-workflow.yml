@@ -15,7 +15,7 @@ on:
 jobs:
 
   tagging:
-    name: 태깅 및 릴리즈
+    name: 태깅 및 릴리즈 1
     runs-on: ubuntu-latest
 
     steps:
