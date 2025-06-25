@@ -1,0 +1,40 @@
+name: zelda-app
+
+services:
+
+  zelda-web:
+    container_name: zelda-web
+    image: zelda-web
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - net_2
+
+  zelda-db:
+    image: mysql
+    container_name: zelda-db
+#    ports:
+#      - "3309:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=zelda_app_1
+      - MYSQL_PASSWORD=zelda_app_1!
+      - MYSQL_DATABASE=zelda_exp_db
+    networks:
+      - net_2
+
+  zelda-app:
+    image: zelda-app:0.2
+    container_name: zelda-app
+#    ports:
+#      - "8080:8080"
+    networks:
+      - net_2
+    depends_on:
+      - zelda-db
+
+networks:
+  net_2:
+    name: net_2
+    driver: bridge
