@@ -25,7 +25,8 @@ services:
       - net_2
 
   zelda-app:
-    image: zelda-app:0.2
+#    image: zelda-app:0.2
+    image: ghcr.io/zelda31777/new-ci:latest
     container_name: zelda-app
 #    ports:
 #      - "8080:8080"
